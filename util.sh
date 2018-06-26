@@ -26,3 +26,11 @@ zipIt() {
     fl=$1   
     `7za a -t7z  "$fl.7z"  "$fl"`
  }
+ 
+ zipInfo() {
+   for zips in $(ls "$1"); do
+      for raw in `zipinfo -1 $zips`; do
+         echo "$zips : $raw"
+      done
+   done
+ }

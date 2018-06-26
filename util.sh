@@ -17,12 +17,12 @@ unzipAll(){
 
 zipIt() {
    if [ "$#" -eq  "0" ]; then 
-        echo "usage zipIt <path to file> [<out dir -defaults pwd>]"
+        echo "usage zipIt <path to file>"
    fi
    if [ -z "$2" ]; then 
       outDir = "."
    else
     rc=0
     fl=$1   
-    `7za a -t7z  $fl.7z  $fl -o ${outDir}`
+    `7za a -t7z  "$fl.7z"  "$fl"`
  }

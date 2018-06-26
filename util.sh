@@ -1,5 +1,5 @@
 #!/bin/bash
-function unzipAll(){
+unzipAll(){
    if [ "$#" -eq  "0" ]; then 
         echo "usage unzipAll <fully qualified path of zip file- wieldcards supported> [<out dir -defaults pwd>]
    fi
@@ -13,4 +13,16 @@ function unzipAll(){
         counter=$((counter+1))
     done
     print "Unzipped ${counter} zip-files"
-}    
+}  
+
+zipIt() {
+   if [ "$#" -eq  "0" ]; then 
+        echo "usage zipIt <path to file> [<out dir -defaults pwd>]"
+   fi
+   if [ -z "$2" ]; then 
+      outDir = "."
+   else
+    rc=0
+    fl=$1   
+    `7za a -t7z  $fl.7z  $fl -o ${outDir}`
+ }
